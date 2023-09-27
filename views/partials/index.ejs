@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800;900&family=Judson:ital@1&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+        <link rel="stylesheet" href="public\styles.css">
+        
+       
+        <title>Todo App</title>
+</head>
+<body class="body">
+    
+
+    <div class="top-div">
+        <h1 class="todo-list">Todo List</h1>
+        <h2 class="subtitle"> What to do today?  </h2>
+    </div>
+
+    <div class="middle-section">
+
+        
+
+        <div class="rectangleL-div ">
+            <% if ( locals.itemLista && itemLista.length > 0) { %>
+               
+                <% for( let index = 0; index < itemLista.length; index++ ) { %>
+                    <ul>
+         
+                                <li class="strikethrough<%= index %>"> 
+                                    <input name="cb<%= index %>" type="checkbox" id="cb<%= index %>">
+                                    
+                                    <p class="strikethrough"><%= itemLista[index] %></p>   
+
+                                    
+                                </li> 
+                                
+                                
+                          
+                            
+                        </ul>
+                        
+                        <label for="cb<%= index %>" class="checks<%= index %>" name="checks<%= index %>">✔</label><br> 
+                    <% } %>
+             
+            <% } %>
+       
+            
+        </div>
+                    <%# TEXT FIELD INPUT %>
+            <div class="text-center" >
+                
+                        <form action="/submit" method="POST">
+                            <input type="text" class="form-control"  rows="4" name="itemLista" required>
+                                 
+                               
+                            <input type="submit" name="addTo" id="rectangleL" class="button btn-rounded text-center" value="List 1"> +
+
+                            <input type="submit" name="addTo" id="rectangleR" class="button btn-rounded text-center" value="List 2">
+                            
+                        </form>
+            </div>  
+
+                <div class="rectangleR-div">
+                        
+                    
+                    <% if ( locals.itemListaDireita && locals.itemListaDireita.length > 0) { %>
+               
+                        <% for( let i = 0; i < itemListaDireita.length; i++ ) { %>
+                            <ul>
+                 
+                                        <li class="Rstrikethrough<%= i %>"> 
+                                            <input name="Rcb<%= i %>" type="checkbox" id="Rcb<%= i %>">
+                                            
+                                            <p class="Rstrikethrough"><%= itemListaDireita[i] %></p>   
+        
+                                            
+                                        </li> 
+                                        
+                                                            
+                                </ul>
+                                
+                                <label for="Rcb<%= i %>" class="Rchecks<%= i %>" name="Rchecks<%= i %>">✔</label><br> 
+                            <% } %>
+                     
+                    <% } %>
+
+
+
+
+            </div>
+
+        
+
+        </div>
+        <%- include('footer.ejs') %>
+</body>
+
+
+
+
+
+
+
+
+
+</html>
